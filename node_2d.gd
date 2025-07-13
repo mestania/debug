@@ -4,6 +4,8 @@ extends Node2D
 @export var color_default : Color
 @export var sprite : Sprite2D
 @export var nine_patch_rect : NinePatchRect
+
+
 func _on_area_2d_mouse_entered() -> void:
 	sprite.modulate = color_select
 	print('mouse entered Area2D')
@@ -20,6 +22,5 @@ func _on_nine_patch_rect_mouse_entered() -> void:
 
 
 func _on_nine_patch_rect_mouse_exited() -> void:
-	if not Rect2(Vector2(), nine_patch_rect.size).has_point(get_local_mouse_position()):
-		nine_patch_rect.modulate = color_default
-		print('mouse exited NinePatchRect')
+	nine_patch_rect.modulate = color_default
+	print('mouse exited NinePatchRect')

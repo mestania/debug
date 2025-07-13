@@ -7,9 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(128, 128)
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("panel", "sprite", "nine_patch_rect")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("sprite", "nine_patch_rect")]
 script = ExtResource("1_0e48y")
-panel = NodePath("")
 color_select = Color(1, 0, 0, 1)
 color_default = Color(1, 1, 1, 1)
 sprite = NodePath("Area2D/Sprite2D")
