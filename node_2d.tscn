@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://yodtn68f5e1j"]
+
+[ext_resource type="Script" uid="uid://poqwip4gmprf" path="res://node_2d.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://dqb8ib2na6ye4" path="res://icon.svg" id="1_wtcfe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
+size = Vector2(128, 128)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("panel", "sprite", "nine_patch_rect")]
+script = ExtResource("1_0e48y")
+panel = NodePath("")
+color_select = Color(1, 0, 0, 1)
+color_default = Color(1, 1, 1, 1)
+sprite = NodePath("Area2D/Sprite2D")
+nine_patch_rect = NodePath("NinePatchRect")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = 476.0
+offset_top = 261.0
+offset_right = 591.0
+offset_bottom = 360.0
+mouse_filter = 0
+texture = ExtResource("1_wtcfe")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(445, 311)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_wtcfe")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="mouse_entered" from="NinePatchRect" to="." method="_on_nine_patch_rect_mouse_entered"]
+[connection signal="mouse_exited" from="NinePatchRect" to="." method="_on_nine_patch_rect_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
