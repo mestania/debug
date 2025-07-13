@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://yodtn68f5e1j"]
+[gd_scene load_steps=5 format=3 uid="uid://yodtn68f5e1j"]
 
 [ext_resource type="Script" uid="uid://poqwip4gmprf" path="res://node_2d.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://dqb8ib2na6ye4" path="res://icon.svg" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://pigqitla1mjp" path="res://rect.png" id="2_epypp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(128, 128)
@@ -12,15 +13,24 @@ panel = NodePath("")
 color_select = Color(1, 0, 0, 1)
 color_default = Color(1, 1, 1, 1)
 sprite = NodePath("Area2D/Sprite2D")
-nine_patch_rect = NodePath("NinePatchRect")
+nine_patch_rect = NodePath("CanvasLayer/NinePatchRect")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-offset_left = 476.0
-offset_top = 261.0
-offset_right = 591.0
-offset_bottom = 360.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.397569
+anchor_top = 0.310185
+anchor_right = 0.59375
+anchor_bottom = 0.635802
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 0
-texture = ExtResource("1_wtcfe")
+texture = ExtResource("2_epypp")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -32,9 +42,7 @@ shape = SubResource("RectangleShape2D_0e48y")
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("1_wtcfe")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[connection signal="mouse_entered" from="NinePatchRect" to="." method="_on_nine_patch_rect_mouse_entered"]
-[connection signal="mouse_exited" from="NinePatchRect" to="." method="_on_nine_patch_rect_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/NinePatchRect" to="." method="_on_nine_patch_rect_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/NinePatchRect" to="." method="_on_nine_patch_rect_mouse_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -20,5 +20,6 @@ func _on_nine_patch_rect_mouse_entered() -> void:
 
 
 func _on_nine_patch_rect_mouse_exited() -> void:
-	nine_patch_rect.modulate = color_default
-	print('mouse exited NinePatchRect')
+	if not Rect2(Vector2(), nine_patch_rect.size).has_point(get_local_mouse_position()):
+		nine_patch_rect.modulate = color_default
+		print('mouse exited NinePatchRect')
